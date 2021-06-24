@@ -87,7 +87,3 @@ yabai -m signal --add event=window_title_changed action="${ubersicht_spaces_refr
 
 set +x
 printf "yabai: configuration loaded...\\n"
-
-
-killall limelight &> /dev/null
-limelight &> /dev/null &

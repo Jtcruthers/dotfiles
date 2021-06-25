@@ -10,7 +10,7 @@ rm -f ~/.config/karabiner/karabiner.json
 rm -f ~/.p10k.zsh
 
 # Install configs
-JDOT_HOME="${HOME}/.config/jdot"
+JDOT_HOME="${HOME}/.config/dotfiles"
 
 git clone git@github.com:Jtcruthers/dotfiles.git $JDOT_HOME
 

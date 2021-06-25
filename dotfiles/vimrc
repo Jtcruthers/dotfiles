@@ -64,14 +64,16 @@ nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
 
 "Vim-Plug
-call plug#begin('~/vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 "Plug 'itchyny/lightline.vim'
 
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
+
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 Plug 'ap/vim-buftabline'
 
@@ -87,7 +89,7 @@ Plug 'leafOfTree/vim-vue-plugin'
 
 Plug 'tpope/vim-fugitive'
 
-Plug 'townk/vim-autoclose'
+"Plug 'townk/vim-autoclose'
 
 Plug 'alvan/vim-closetag'
 
@@ -120,3 +122,13 @@ nnoremap L $
 nnoremap H 0
 
 :command JsonFormat %!python -m json.tool
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<Tab>" :
+  \ coc#refresh()

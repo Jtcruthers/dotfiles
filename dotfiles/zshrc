@@ -13,7 +13,7 @@ alias cdfe="cd ~/vv/vvh-frontend-pwa"
 alias cd8b="cd ~/vv/8base-backend"
 alias cdvr="cd ~/vv/vr_application"
 alias cdaws="cd ~/vv/aws-backend"
-alias cdcon="cd ~/.config/"
+alias cddot="cd ~/.config/dotfiles"
 
 # Git
 alias gcm="git checkout master"

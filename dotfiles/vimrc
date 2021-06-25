@@ -68,17 +68,11 @@ call plug#begin('~/vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'itchyny/lightline.vim'
-
-"Plug 'tpope/vim-eunuch'
+"Plug 'itchyny/lightline.vim'
 
 Plug 'ervandew/supertab'
 
-"Plug 'valloric/matchtagalways'
-
 Plug 'ap/vim-buftabline'
-
-"Plug 'mtscout6/syntastic-local-eslint.vim'
 
 Plug 'w0rp/ale'
 
@@ -95,6 +89,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'townk/vim-autoclose'
 
 Plug 'alvan/vim-closetag'
+
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 

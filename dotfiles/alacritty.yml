@@ -12,6 +12,9 @@ window:
   # Window title
   title: Total Vision Software Development Kit (TVSDK)
 # Font configuration
+font:
+  normal:
+    family: "MesloLGS NF"
 
 # Colors (Tomorrow Night)
 colors:

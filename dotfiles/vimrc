@@ -23,6 +23,7 @@ set laststatus=2
 set showcmd
 set ignorecase  " Ignore case in searches
 set smartcase   " Make searches case sensitive if capital letter is used
+set nocursorline
 
 " Folding
 set foldmethod=indent

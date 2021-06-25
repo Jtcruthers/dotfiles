@@ -20,7 +20,12 @@ alias gcm="git checkout master"
 alias gcs="git checkout release/staging"
 alias gcp="git checkout release/production"
 alias gmm="git merge master"
+alias grm="git rebase -i master"
+alias grc="git rebase --continue"
+alias gra="git rebase --abort"
+alias grs="git rebase --skip"
 alias gcne="git commit --amend --no-edit"
+
 
 # 8base
 alias 8be="8base environment"
@@ -45,9 +50,18 @@ alias awsi="aws lambda invoke --function-name"
 alias awsir="aws lambda invoke --function-name ReportGenerator --payload fileb://events/reportEvent.json outfile.txt"
 alias awsid="aws lambda invoke --function-name DicomGenerator --payload fileb://events/reportEvent.json outfile.txt"
 
+# Tmux
+alias ta="tmux a -t 0"
+alias ta1="tmux a -t 1"
+alias ta2="tmux a -t 2"
+alias ta3="tmux a -t 3"
+alias ta4="tmux a -t 4"
+alias ta5="tmux a -t 5"
+
 # Interpreters
 alias p="python"
 alias n="node"
+alias vim="/usr/local/bin/vim" # brew version with python3
 
 # Shortcuts
 alias c="clear"

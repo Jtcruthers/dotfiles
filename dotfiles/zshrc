@@ -58,6 +58,11 @@ alias ta3="tmux a -t 3"
 alias ta4="tmux a -t 4"
 alias ta5="tmux a -t 5"
 
+# Tmux - VV Specific
+alias taf="tmux a -t fe"
+alias ta8="tmux a -t 8b"
+alias taa="tmux a -t aws"
+
 # Interpreters
 alias p="python"
 alias n="node"

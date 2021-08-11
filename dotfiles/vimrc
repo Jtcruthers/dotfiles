@@ -1,6 +1,3 @@
-
-colorscheme synthwave
-
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
 set smarttab

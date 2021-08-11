@@ -26,7 +26,6 @@ alias gra="git rebase --abort"
 alias grs="git rebase --skip"
 alias gcne="git commit --amend --no-edit"
 
-
 # 8base
 alias 8be="8base environment"
 alias 8bd="8base deploy"

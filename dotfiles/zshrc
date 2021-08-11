@@ -35,35 +35,31 @@ alias 8bil="8base invoke-local"
 alias 8bb="8base backup"
 
 # AWS SAM
-alias sb="sam build"
-alias sbr="sam build ReportGenerator"
-alias sbd="sam build DicomGenerator"
+alias sb="sam build --use-container"
+alias sbr="sam build ReportGeneratorFunction"
 alias sbt="sam build ReportGeneratorTrigger"
+alias sbd="sam build --use-container DicomGeneratorFunction"
+alias sbi="sam build --use-container ImageGeneratorFunction"
 alias si="sam local invoke"
-alias sir="sam local invoke ReportGenerator -e events/reportEvent_local.json"
-alias sid="sam local invoke DicomGenerator -e events/reportEvent_local.json"
-alias sd="sam deploy"
+alias sir="sam local invoke ReportGeneratorFunction -e $HOME/vv/aws-backend/events/report_engine_api_gateway.json"
+alias sid="sam local invoke DicomGeneratorFunction -e $HOME/vv/aws-backend/events/put_pdf_s3.json"
+alias sii="sam local invoke ImageGeneratorFunction -e $HOME/vv/aws-backend/events/put_image_s3.json"
+alias sds="sam deploy --config-env staging"
+alias sdp="sam deploy --config-env production"
 
 # AWS
 alias awsi="aws lambda invoke --function-name"
-alias awsir="aws lambda invoke --function-name ReportGenerator --payload fileb://events/reportEvent.json outfile.txt"
-alias awsid="aws lambda invoke --function-name DicomGenerator --payload fileb://events/reportEvent.json outfile.txt"
+alias awsir="aws lambda invoke --function-name ReportGenerator-staging --payload fileb://events/reportEvent.json outfile.txt"
+alias awsid="aws lambda invoke --function-name DicomGenerator-staging --payload fileb://events/reportEvent.json outfile.txt"
 
 # Tmux
-alias ta="tmux a -t 0"
-alias ta1="tmux a -t 1"
-alias ta2="tmux a -t 2"
-alias ta3="tmux a -t 3"
-alias ta4="tmux a -t 4"
-alias ta5="tmux a -t 5"
-
-# Tmux - VV Specific
+alias ta="tmux a -t"
 alias taf="tmux a -t fe"
 alias ta8="tmux a -t 8b"
 alias taa="tmux a -t aws"
 
 # Interpreters
-alias p="python"
+alias p="python3"
 alias n="node"
 alias vim="/usr/local/bin/vim" # brew version with python3
 

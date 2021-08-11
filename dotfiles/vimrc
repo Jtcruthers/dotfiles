@@ -66,19 +66,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-"Plug 'itchyny/lightline.vim'
-
-"Plug 'ervandew/supertab'
-
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 Plug 'ap/vim-buftabline'
 
 Plug 'w0rp/ale'
-
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'jparise/vim-graphql'
 
 Plug 'pangloss/vim-javascript'
 
@@ -86,13 +80,19 @@ Plug 'leafOfTree/vim-vue-plugin'
 
 Plug 'tpope/vim-fugitive'
 
-"Plug 'townk/vim-autoclose'
-
 Plug 'alvan/vim-closetag'
 
 Plug 'christoomey/vim-tmux-navigator'
 
+Plug 'puremourning/vimspector'
+
+Plug 'arcticicestudio/nord-vim'
+
+Plug 'qpkorr/vim-bufkill'
+
 call plug#end()
+
+colorscheme nord
 
 "Vim Plugin Maps
 map ; :GFiles<CR>
@@ -101,19 +101,27 @@ let g:jedi#force_py_version = 3
 let g:closetag_filenames = '*.html,*.js, *.jsx'
 let g:ale_linter_aliases = {'vue': ['css', 'javascript', 'typescript']}
 let g:ale_linters = { 'javascript': ['eslint', 'prettier'], 'jsx': ['eslint'], 'python': ['pylint'], 'vue': ['eslint', 'prettier'], 'json': ['eslint', 'prettier'] } 
-let g:ale_fixers = {'vue': ['eslint', 'prettier'], 'javascript': ['eslint', 'prettier'], 'html': ['eslint', 'prettier'], 'json': ['eslint', 'prettier'] }
+let g:ale_fixers = {'vue': ['eslint', 'prettier'], 'javascript': ['eslint', 'prettier'], 'python': ['autopep8'], 'html': ['eslint', 'prettier'], 'json': ['eslint', 'prettier'] }
+let g:ale_virtualenv_dir_names = []
 let g:UltiSnipsExpandTrigger="<C-c>"
 let g:racer_cmd = "/Users/justin.carruthers/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 let g:closetag_filetypes = 'html,xhtml,xml,vue'
+let g:vimspector_enable_mappings = 'Human'
+let maplocalleader = "\<Space>"
 
+nmap <Leader>di <Plug>VimspectorBalloonEval
+xmap <Leader>di <Plug>VimspectorBalloonEval
+nmap <LocalLeader><Up> <Plug>VimspectorUpFrame
+nmap <LocalLeader><Down> <Plug>VimspectorDownFrame
 
 set hidden
 silent !stty -ixon
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprevious<CR>
-nnoremap <C-Q> :bdelete<CR>
+nnoremap <C-Q> :BUN<CR>
+nnoremap <C-W> :bdelete<CR>
 nnoremap <Leader>f :ALEFix<CR>
 nnoremap L $
 nnoremap H 0

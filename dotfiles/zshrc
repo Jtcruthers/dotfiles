@@ -9,10 +9,6 @@ export PATH=~/.npm-global/bin:$PATH
 export EDITOR=vim
 
 # Naviagation
-alias cdfe="cd ~/vv/vvh-frontend-pwa"
-alias cd8b="cd ~/vv/8base-backend"
-alias cdvr="cd ~/vv/vr_application"
-alias cdaws="cd ~/vv/aws-backend"
 alias cddot="cd ~/.config/dotfiles"
 
 # Git
@@ -26,37 +22,17 @@ alias gra="git rebase --abort"
 alias grs="git rebase --skip"
 alias gcne="git commit --amend --no-edit"
 
-# 8base
-alias 8be="8base environment"
-alias 8bd="8base deploy"
-alias 8bm="8base migration"
-alias 8bi="8base invoke"
-alias 8bil="8base invoke-local"
-alias 8bb="8base backup"
-
 # AWS SAM
 alias sb="sam build --use-container"
-alias sbr="sam build ReportGeneratorFunction"
-alias sbt="sam build ReportGeneratorTrigger"
-alias sbd="sam build --use-container DicomGeneratorFunction"
-alias sbi="sam build --use-container ImageGeneratorFunction"
 alias si="sam local invoke"
-alias sir="sam local invoke ReportGeneratorFunction -e $HOME/vv/aws-backend/events/report_engine_api_gateway.json"
-alias sid="sam local invoke DicomGeneratorFunction -e $HOME/vv/aws-backend/events/put_pdf_s3.json"
-alias sii="sam local invoke ImageGeneratorFunction -e $HOME/vv/aws-backend/events/put_image_s3.json"
 alias sds="sam deploy --config-env staging"
 alias sdp="sam deploy --config-env production"
 
 # AWS
 alias awsi="aws lambda invoke --function-name"
-alias awsir="aws lambda invoke --function-name ReportGenerator-staging --payload fileb://events/reportEvent.json outfile.txt"
-alias awsid="aws lambda invoke --function-name DicomGenerator-staging --payload fileb://events/reportEvent.json outfile.txt"
 
 # Tmux
 alias ta="tmux a -t"
-alias taf="tmux a -t fe"
-alias ta8="tmux a -t 8b"
-alias taa="tmux a -t aws"
 
 # Interpreters
 alias p="python3"
@@ -72,3 +48,7 @@ source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# VV
+source ~/.config/dotfiles/dotfiles/vvrc

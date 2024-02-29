@@ -1,0 +1,28 @@
+env:
+  TERM: xterm-256color
+
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+window:
+
+  # Window title
+  title: Virutal Vision Software Development Kit (VVSDK)
+# Font configuration
+font:
+  normal:
+    #family: "MesloLGS NF"
+    family: "IosevkaTerm Nerd Font"
+    style: Regular
+  bold:
+    family: "IosevkaTerm Nerd Font"
+    style: Bold 
+  italic:
+    style: Italic
+  size: 14.0
+
+
+
+background_opacity: 0.95
+
+scrolling:
+  history: 100000

@@ -1,0 +1,29 @@
+[alias]
+	co = checkout
+	st = status
+	pl = pull
+	p = push
+	b = branch
+	bd = branch -d
+	l = log
+	ane = commit --amend --no-edit
+
+[user]
+	name = Justin Carruthers
+	email = Jtcruthers@gmail.com
+[core]
+	autocrlf = false
+	whitespace = cr-at-eol
+	ignorecase = false
+[fetch]
+	prune = true
+[diff]
+	colorMoved = zebra
+[pull]
+	rebase = true
+[init]
+	defaultBranch = master
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = false

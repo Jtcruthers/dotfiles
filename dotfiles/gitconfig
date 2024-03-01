@@ -11,6 +11,7 @@
 [user]
 	name = Justin Carruthers
 	email = Jtcruthers@gmail.com
+	signingkey = 592741B29F3FB634
 [core]
 	autocrlf = false
 	whitespace = cr-at-eol

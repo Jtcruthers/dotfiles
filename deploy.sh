@@ -9,9 +9,14 @@ rm -f ~/.config/nvim/init.vim
 rm -f ~/.config/nvim/coc-settings.json
 
 # Install configs
-JDOT_HOME="${HOME}/.config/dotfiles"
+JDOT_HOME="${HOME}/.dotfiles"
 
-git clone git@github.com:Jtcruthers/dotfiles.git $JDOT_HOME
+if [ -d $JDOT_HOME ]; then
+  echo "$JDOT_HOME already exists"
+else
+  echo "Cloning Jtcruthers/dotfiles.git to $JDOT_HOME"
+  git clone git@github.com:Jtcruthers/dotfiles.git $JDOT_HOME
+fi
 
 ln -s "${JDOT_HOME}/dotfiles/zshrc" ~/.zshrc
 ln -s "${JDOT_HOME}/dotfiles/tmux.conf" ~/.tmux.conf

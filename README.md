@@ -13,10 +13,11 @@ Neovim + tmux is configured to work together. The neovim leader key is the defau
 
 
 ## Installation
-Warning: Running the deploy script deletes files. Save them first if you want a backup. 
 
-```sh
-./deploy.sh
-```
+Use `stow` to install the dotfiles. 
 
-This deletes the dotfiles tracked and replaces them with soft links to the dotfiles in this repository. This means making changes to the files in their respective locations automatically updates the dotfiles in this repository.
+In the root of this repo, run `stow -v --no-folding dotfiles`
+
+This should link all the dotfiles inside in their correct place. At least it did for me 🤷
+
+Only thing left to do is install catppuccin for Alacritty via their [instructions](https://github.com/catppuccin/alacritty)

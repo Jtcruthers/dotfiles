@@ -39,6 +39,10 @@ alias sdp="sam deploy --config-env production"
 alias awsp="aws --profile vv-prod"
 alias awsd="aws --profile vv-dev"
 
+# 8base
+alias 8bm="8base migration"
+alias 8bd="8base deploy"
+
 # Tmux
 alias tmux="TERM=xterm-256color tmux"
 alias ta="tmux a -t"

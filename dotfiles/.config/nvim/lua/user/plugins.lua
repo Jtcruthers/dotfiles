@@ -60,6 +60,7 @@ require("lazy").setup({
   { "hrsh7th/cmp-nvim-lua" },
   { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
   { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" }, --snippet engine
+  { "rafamadriz/friendly-snippets" },
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",

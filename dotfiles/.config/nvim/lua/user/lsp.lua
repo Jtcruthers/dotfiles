@@ -20,24 +20,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+    vim.keymap.set('n', '<Leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end
 })
-
-function prettyPrintTable(tbl, indent)
-    indent = indent or 0
-    for k, v in pairs(tbl) do
-        if type(v) == "table" then
-            print(string.rep(" ", indent) .. k .. " = {")
-            prettyPrintTable(v, indent + 4)
-            print(string.rep(" ", indent) .. "}")
-        else
-            print(string.rep(" ", indent) .. k .. " = " .. tostring(v))
-        end
-    end
-end
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 

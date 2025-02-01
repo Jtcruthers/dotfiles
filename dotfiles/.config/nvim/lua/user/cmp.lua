@@ -113,6 +113,7 @@ cmp.setup {
       })[entry.source.name]
       return vim_item
     end,
+    expandable_indicator = true,
   },
   sources = {
     { name = "copilot" },
@@ -120,6 +121,7 @@ cmp.setup {
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = "lazydev", group_index = 0 },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

@@ -1,4 +1,3 @@
-require("neodev").setup {}
 require("neoconf").setup {}
 
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')

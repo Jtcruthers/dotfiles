@@ -20,7 +20,17 @@ require("lazy").setup({
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "kyazdani42/nvim-web-devicons" },
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' },
-  "folke/neodev.nvim",
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
   "folke/neoconf.nvim",
 
   -- UI

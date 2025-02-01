@@ -51,6 +51,7 @@ require("lazy").setup({
   "williamboman/mason.nvim", -- simple to use language server installer
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig", -- enable LSP
+  "darrikonn/vim-gofmt",
 
   -- Completion
   { "hrsh7th/nvim-cmp" }, -- The completion plugin

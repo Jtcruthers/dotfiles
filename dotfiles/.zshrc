@@ -84,3 +84,4 @@ esac
 
 # opam configuration
 [[ ! -r /Users/justin/.opam/opam-init/init.zsh ]] || source /Users/justin/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+export PATH="$PATH:/usr/local/opt/postgresql@16/bin"

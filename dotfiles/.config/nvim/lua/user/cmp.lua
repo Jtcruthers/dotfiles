@@ -109,6 +109,7 @@ cmp.setup {
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
+        ['vim-dadbod-completion'] = "[DB]",
       })[entry.source.name]
       return vim_item
     end,
@@ -134,3 +135,18 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "sql",
+  callback = function()
+    require("cmp").setup.buffer({
+      sources = {
+        { name = "vim-dadbod-completion" },
+      },
+      experimental = {
+        ghost_text = false,
+        native_menu = false,
+      },
+    })
+  end
+})

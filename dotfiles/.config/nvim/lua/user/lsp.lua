@@ -58,7 +58,7 @@ require("mason-lspconfig").setup_handlers {
       }
     }
   end,
-  ["tsserver"] = function()
+  ["ts_ls"] = function()
     local neoconf = require("neoconf")
 
     local init_options = {}
@@ -78,7 +78,7 @@ require("mason-lspconfig").setup_handlers {
         },
       }
     end
-    require("lspconfig").tsserver.setup {
+    require("lspconfig").ts_ls.setup {
       filetypes = { "vue", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
       compilerOptions = {
         noErrorTruncate = true

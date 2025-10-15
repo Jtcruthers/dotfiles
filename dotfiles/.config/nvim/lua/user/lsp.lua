@@ -20,8 +20,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<Leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    vim.keymap.set({'n', 'x'}, 'f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    vim.keymap.set('n', 'F', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end
 })
 
@@ -62,13 +62,8 @@ require("mason-lspconfig").setup_handlers {
       plugins = {
         {
           name = "@vue/typescript-plugin",
-          location = "/Users/justin/.asdf/installs/nodejs/18.16.1/lib/node_modules/@vue/typescript-plugin",
+          location = "/Users/justin/Library/pnpm/global/5/node_modules/@vue/typescript-plugin",
           languages = {"javascript", "typescript", "vue"},
-        },
-        {
-          name = "@0no-co/graphqlsp",
-          location = "/Users/justin/.asdf/installs/nodejs/18.16.1/lib/node_modules/@0no-co/graphqlsp",
-          schema = "/Users/justin/vv/virtual-vision-pwa-v2/schema.graphql"
         },
       },
     }
@@ -78,6 +73,44 @@ require("mason-lspconfig").setup_handlers {
         noErrorTruncate = true
       },
       init_options = init_options,
+    }
+  end,
+  ["gopls"] = function()
+    require("lspconfig").gopls.setup {
+      capabilities = lsp_capabilities,
+      on_attach = function(_, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "GoFmt",
+        })
+      end,
+    }
+  end,
+  ["golangci_lint_ls"] = function()
+    require("lspconfig").golangci_lint_ls.setup {
+      capabilities = lsp_capabilities,
+      cmd = { "golangci-lint-langserver" },
+      init_options = {
+        command = {
+            "golangci-lint",
+            "run",
+            "--output.json.path",
+            "stdout",
+            "--show-stats=false",
+            "--issues-exit-code=1",
+        },
+      }
+    }
+  end,
+  ["eslint"] = function()
+    require("lspconfig").eslint.setup {
+      capabilities = lsp_capabilities,
+      on_attach = function(_, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
     }
   end
 }

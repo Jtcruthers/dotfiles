@@ -143,6 +143,8 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     require("cmp").setup.buffer({
       sources = {
+        { name = "copilot" },
+        { name = "buffer" },
         { name = "vim-dadbod-completion" },
       },
       experimental = {

@@ -58,25 +58,20 @@ require("mason-lspconfig").setup_handlers {
     }
   end,
   ["ts_ls"] = function()
-    local neoconf = require("neoconf")
-
-    local init_options = {}
-    if neoconf.get("is-volar-project") then
-      init_options = {
-        plugins = {
-          {
-            name = "@vue/typescript-plugin",
-            location = "/Users/justin/.asdf/installs/nodejs/18.16.1/lib/node_modules/@vue/typescript-plugin",
-            languages = {"javascript", "typescript", "vue"},
-          },
-          {
-            name = "@0no-co/graphqlsp",
-            location = "/Users/justin/.asdf/installs/nodejs/18.16.1/lib/node_modules/@0no-co/graphqlsp",
-            schema = "/Users/justin/vv/virtual-vision-pwa-v2/schema.graphql"
-          },
+    local init_options = {
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = "/Users/justin/.asdf/installs/nodejs/18.16.1/lib/node_modules/@vue/typescript-plugin",
+          languages = {"javascript", "typescript", "vue"},
         },
-      }
-    end
+        {
+          name = "@0no-co/graphqlsp",
+          location = "/Users/justin/.asdf/installs/nodejs/18.16.1/lib/node_modules/@0no-co/graphqlsp",
+          schema = "/Users/justin/vv/virtual-vision-pwa-v2/schema.graphql"
+        },
+      },
+    }
     require("lspconfig").ts_ls.setup {
       filetypes = { "vue", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
       compilerOptions = {
@@ -87,5 +82,5 @@ require("mason-lspconfig").setup_handlers {
   end
 }
 
-
+-- LSPs outside of Mason
 require("lspconfig").gleam.setup({})

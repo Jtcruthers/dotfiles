@@ -2,9 +2,9 @@
 # VERSION: 3.0
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
-SETUVAR Z_DATA:/Users/justin/\x2elocal/share/z/data
-SETUVAR Z_DATA_DIR:/Users/justin/\x2elocal/share/z
-SETUVAR Z_EXCLUDE:\x5e/Users/justin\x24
+SETUVAR Z_DATA:/home/justin/\x2elocal/share/z/data
+SETUVAR Z_DATA_DIR:/home/justin/\x2elocal/share/z
+SETUVAR Z_EXCLUDE:\x5e/home/justin\x24
 SETUVAR __fish_initialized:3800
 SETUVAR _fisher_catppuccin_2F_fish_files:\x7e/\x2econfig/fish/themes/Catppuccin\x20Frappe\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Latte\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Macchiato\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Mocha\x2etheme
 SETUVAR _fisher_jethrokuan_2F_z_files:\x7e/\x2econfig/fish/functions/__z\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_add\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_clean\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_complete\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/z\x2efish
@@ -51,4 +51,4 @@ SETUVAR fish_pager_color_selected_background:\x1d
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/Users/justin/\x2ecargo/bin\x1e/usr/local/opt/postgresql\x4016/bin\x1e/usr/local/opt\x1e/Users/justin/go/bin\x1e/Users/justin/\x2ebin\x1e/Users/justin/\x2elocal/bin\x1e/Users/justin/\x2econfig/emacs/bin\x1e/Users/justin/Applications\x1e/var/lib/flatpak/exports/bin/\x1e/Users/justin/\x2efzf/bin\x1e/Users/justin/\x2easdf/shims
+SETUVAR fish_user_paths:/home/justin/\x2ecargo/bin\x1e/usr/local/opt/postgresql\x4016/bin\x1e/usr/local/opt\x1e/home/justin/go/bin\x1e/home/justin/\x2ebin\x1e/home/justin/\x2elocal/bin\x1e/home/justin/\x2econfig/emacs/bin\x1e/home/justin/Applications\x1e/var/lib/flatpak/exports/bin/\x1e/home/justin/\x2efzf/bin\x1e/home/justin/\x2easdf/shims

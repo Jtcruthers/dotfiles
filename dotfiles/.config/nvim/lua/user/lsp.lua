@@ -27,18 +27,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('mason').setup({})
-require('mason-lspconfig').setup({})
+require('mason').setup()
 
-require("mason-lspconfig").setup_handlers {
-  function(server_name)
-    require("lspconfig")[server_name].setup {
-      capabilities = lsp_capabilities,
-    }
-  end,
+require("mason-lspconfig").setup {
+  automatic_enable = true,
   ["lua_ls"] = function()
-    local lspconfig = require("lspconfig")
-    lspconfig.lua_ls.setup {
+    vim.lsp.config.lua_ls.setup {
       capabilities = lsp_capabilities,
       settings = {
         Lua = {
@@ -67,7 +61,7 @@ require("mason-lspconfig").setup_handlers {
         },
       },
     }
-    require("lspconfig").ts_ls.setup {
+    vim.lsp.config.ts_ls.setup {
       filetypes = { "vue", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
       compilerOptions = {
         noErrorTruncate = true
@@ -76,7 +70,7 @@ require("mason-lspconfig").setup_handlers {
     }
   end,
   ["gopls"] = function()
-    require("lspconfig").gopls.setup {
+    vim.lsp.config.gopls.setup {
       capabilities = lsp_capabilities,
       on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -87,7 +81,7 @@ require("mason-lspconfig").setup_handlers {
     }
   end,
   ["golangci_lint_ls"] = function()
-    require("lspconfig").golangci_lint_ls.setup {
+    vim.lsp.config.golangci_lint_ls.setup {
       capabilities = lsp_capabilities,
       cmd = { "golangci-lint-langserver" },
       init_options = {
@@ -103,7 +97,7 @@ require("mason-lspconfig").setup_handlers {
     }
   end,
   ["eslint"] = function()
-    require("lspconfig").eslint.setup {
+    vim.lsp.config.eslint.setup {
       capabilities = lsp_capabilities,
       on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -116,4 +110,4 @@ require("mason-lspconfig").setup_handlers {
 }
 
 -- LSPs outside of Mason
-require("lspconfig").gleam.setup({})
+--vim.lsp.config.gleam.setup({})

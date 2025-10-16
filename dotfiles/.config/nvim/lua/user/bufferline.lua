@@ -72,5 +72,5 @@ bufferline.setup {
     --   return buffer_a.modified > buffer_b.modified
     -- end
   },
-  highlights = require("catppuccin.groups.integrations.bufferline").get(),
+  highlights = require("everforest").colorscheme,
 }

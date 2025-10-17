@@ -41,15 +41,6 @@ require("lazy").setup({
   { "moll/vim-bbye",            commit = "25ef93ac5a87526111f43e5110675032dbcacf56" },
   { "RRethy/vim-illuminate" },
   {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    opts = {
-      direction = "float",
-      open_mapping = [[<leader>t]],
-      autochdir = true,
-    }
-  },
-  {
     "goolord/alpha-nvim",
     config = function()
       require 'alpha'.setup(require 'alpha.themes.dashboard'.config)

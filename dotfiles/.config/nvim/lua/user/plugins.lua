@@ -64,13 +64,29 @@ require("lazy").setup({
     }
   },
 
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "marilari88/neotest-vitest",
+      "nvim-neotest/neotest-python",
+      {
+        "fredrikaverpil/neotest-golang",
+        version = "v1.15.1",
+      }
+    }
+  },
+
   -- Completion
   { "hrsh7th/nvim-cmp" },   -- The completion plugin
   { "hrsh7th/cmp-buffer" }, -- buffer completions
   { "hrsh7th/cmp-path" },   -- path completions
   { "hrsh7th/cmp-nvim-lsp" },
   { "hrsh7th/cmp-nvim-lua" },
-  { "saadparwaiz1/cmp_luasnip" },                                            -- snippet completions
+  { "saadparwaiz1/cmp_luasnip" },                                                       -- snippet completions
   { "L3MON4D3/LuaSnip",            version = "v2.*", build = "make install_jsregexp" }, --snippet engine
   { "rafamadriz/friendly-snippets" },
   {

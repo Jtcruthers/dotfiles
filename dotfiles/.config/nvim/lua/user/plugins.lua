@@ -31,7 +31,6 @@ require("lazy").setup({
       },
     },
   },
-  "folke/neoconf.nvim",
 
   -- UI
   { "akinsho/bufferline.nvim",  version = "*" },
@@ -97,6 +96,16 @@ require("lazy").setup({
   },
   "zbirenbaum/copilot-cmp",
   {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    opts = {
+      -- See Configuration section for options
+    },
+  },
+  {
     "greggh/claude-code.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim", -- Required for git operations
@@ -136,6 +145,28 @@ require("lazy").setup({
         background = "hard",
       })
     end,
+  },
+
+  -- DAP
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      -- UI improvements
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+      -- Virtual text showing variable values
+      "theHamsta/nvim-dap-virtual-text",
+      -- Language-specific adapters (install what you need)
+      "mxsdev/nvim-dap-vscode-js",  -- JavaScript/TypeScript
+      "leoluz/nvim-dap-go", -- golang
+    }
+  },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    opts = {
+      ensure_installed = { "js-debug-adapter" },
+      handlers = {},
+    },
   },
 
   -- Backend

@@ -12,6 +12,7 @@ local vitest = require("neotest-vitest")({
 
 local golang = require("neotest-golang")({
   runner = "gotestsum",
+  warn_test_name_dupes = false,
 })
 
 local python = require("neotest-python")({

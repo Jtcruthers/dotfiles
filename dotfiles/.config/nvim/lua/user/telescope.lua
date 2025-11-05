@@ -88,6 +88,7 @@ telescope.setup {
 
 telescope.load_extension "fzf"
 telescope.load_extension "media_files"
+telescope.load_extension "tmux"
 
 function noremap(mode, shortcut, command)
   vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
@@ -98,5 +99,6 @@ noremap("n", "<leader>ff", require('telescope.builtin').find_files)
 noremap("n", "<leader>fg", require('telescope.builtin').live_grep)
 noremap("n", "<leader>fb", require('telescope.builtin').buffers)
 noremap("n", "<leader>fh", require('telescope.builtin').help_tags)
-noremap("n", "<leader>ft", require('telescope.builtin').treesitter)
+noremap("n", "<leader>ft", ':Telescope tmux sessions<CR>')
+noremap("n", "<leader>fw", ':Telescope tmux windows<CR>')
 

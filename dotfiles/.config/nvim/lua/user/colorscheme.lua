@@ -1,4 +1,5 @@
 local colorscheme = 'everforest'
+vim.opt.termguicolors = true
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
@@ -26,7 +27,7 @@ if colorscheme == 'catppuccin' then
     }
   }
 elseif colorscheme == 'everforest' then
-  vim.o.background=dark
+  vim.o.background = dark
   local status_ok, everforest = pcall(require, "everforest")
   if not status_ok then
     return

@@ -20,3 +20,9 @@ end
 # pnpm end
 
 
+set -gx SDL_VIDEODRIVER 'wayland,x11,windows'
+set -gx EDITOR 'nvim'
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

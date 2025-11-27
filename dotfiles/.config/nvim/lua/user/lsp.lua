@@ -89,6 +89,18 @@ require("mason-lspconfig").setup({
 			},
 		})
 	end,
+	["basedpyright"] = function()
+		vim.lsp.config.basedpyright.setup({
+			capabilities = lsp_capabilities,
+			settings = {
+				basedpyright = {
+					analysis = {
+						typeCheckingMode = "basic",
+					},
+				},
+			},
+		})
+	end,
 })
 
 -- LSPs outside of Mason

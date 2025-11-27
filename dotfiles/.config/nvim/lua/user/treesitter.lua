@@ -14,7 +14,10 @@ configs.setup({
 	ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
 	highlight = {
 		enable = true, -- false will disable the whole extension
-		disable = { "css" }, -- list of language that will be disabled
+		disable = {
+		  "css",
+		  "python" -- for some reason python highlighting quit working
+		},
 	},
 	autopairs = {
 		enable = true,

@@ -30,7 +30,6 @@ require("lazy").setup({
 	},
 	{ "christoomey/vim-tmux-navigator" },
 
-	-- UI
 	{ "nvim-mini/mini.nvim", version = false },
 	"folke/which-key.nvim",
 
@@ -39,16 +38,6 @@ require("lazy").setup({
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig", -- enable LSP
 	"darrikonn/vim-gofmt",
-	{
-		"OlegGulevskyy/better-ts-errors.nvim",
-		dependencies = { "MunifTanjim/nui.nvim" },
-		config = {
-			keymaps = {
-				toggle = "<leader>ee", -- default '<leader>dd'
-				go_to_definition = "<leader>ex", -- default '<leader>dx'
-			},
-		},
-	},
 
 	-- Completion
 	{ "hrsh7th/nvim-cmp" }, -- The completion plugin

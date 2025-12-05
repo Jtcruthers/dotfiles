@@ -9,13 +9,6 @@ function noremap(mode, shortcut, command)
 	vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
--- Normal --
--- Better window navigation
-noremap("n", "<C-h>", "<C-w>h")
-noremap("n", "<C-j>", "<C-w>j")
-noremap("n", "<C-k>", "<C-w>k")
-noremap("n", "<C-l>", "<C-w>l")
-
 -- Create windows
 map("n", "<leader>v", ":vsp<CR>")
 map("n", "<leader>s", ":sp<CR>")
@@ -25,10 +18,10 @@ noremap("n", "j", "gj")
 noremap("n", "k", "gk")
 
 -- Resize with arrows
-noremap("n", "<S-Up>", ":resize -2<CR>")
-noremap("n", "<S-Down>", ":resize +2<CR>")
-noremap("n", "<S-Left>", ":vertical resize -2<CR>")
-noremap("n", "<S-Right>", ":vertical resize +2<CR>")
+noremap("n", "<M-k>", ":resize -2<CR>")
+noremap("n", "<M-j>", ":resize +2<CR>")
+noremap("n", "<M-l>", ":vertical resize -5<CR>")
+noremap("n", "<M-h>", ":vertical resize +5<CR>")
 
 -- Delete buffers
 noremap("n", "<leader>w", "<Cmd>lua MiniBufremove.delete()<CR>") -- delete buffer, keep window
@@ -57,15 +50,24 @@ end
 noremap("v", "<", "<gv")
 noremap("v", ">", ">gv")
 
--- Terminal --
--- Better terminal navigation
-map("t", "<C-h>", "<C-\\><C-N><C-w>h")
-map("t", "<C-j>", "<C-\\><C-N><C-w>j")
-map("t", "<C-k>", "<C-\\><C-N><C-w>k")
-map("t", "<C-l>", "<C-\\><C-N><C-w>l")
+function get_cwd(local_opts)
+	local_opts = local_opts or {}
 
-noremap("n", ";;", ":Pick git_files<CR>")
-noremap("n", ";f", ":Pick files<CR>")
+	-- Find the git root directory
+	local git_root = vim.fs.root(0, ".git")
+
+	-- Fall back to current working directory if not in a git repo
+	if not git_root then
+		return vim.fn.getcwd()
+	end
+
+	return git_root
+end
+
+vim.keymap.set("n", ";", function()
+	MiniExtra.pickers.git_files({ path = get_cwd() })
+end)
+noremap("n", ";;", ":Pick files<CR>")
 noremap("n", ";s", ":Pick grep_live<CR>")
 noremap("n", ";d", ":Pick diagnostics<CR>")
 noremap("n", ";b", ":Pick buffers<CR>")

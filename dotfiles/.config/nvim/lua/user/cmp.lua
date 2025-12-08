@@ -1,26 +1,3 @@
-require("copilot").setup({
-	panel = {
-		enabled = true,
-	},
-	suggestion = {
-		enabled = false,
-	},
-})
-require("copilot_cmp").setup()
-
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
-
-local has_words_before = function()
-	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
-		return false
-	end
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
-end
-
 local kind_icons = {
 	Text = "",
 	Method = "m",
@@ -50,103 +27,64 @@ local kind_icons = {
 	Copilot = "",
 }
 
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
-			insert({ body = args.body }) -- Insert at cursor
-			cmp.resubscribe({ "TextChangedI", "TextChangedP" })
-			require("cmp.config").set_onetime({ sources = {} })
-		end,
-	},
-	mapping = {
-		["<C-j>"] = cmp.mapping.select_next_item(),
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		["<C-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
-		-- Accept currently selected item. If none selected, `select` first item.
-		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = vim.schedule_wrap(function(fallback)
-			if cmp.visible() and has_words_before() then
-				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-	},
-	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			vim_item.menu = ({
-				copilot = "[Copilot]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[Snippet]",
-				buffer = "[Buffer]",
-				path = "[Path]",
-				["vim-dadbod-completion"] = "[DB]",
-			})[entry.source.name]
-			return vim_item
-		end,
-		expandable_indicator = true,
-	},
-	sources = {
-		{ name = "copilot" },
-		{ name = "nvim_lsp" },
-		{ name = "mini_snippets" },
-		{ name = "buffer" },
-		{ name = "path" },
-		{ name = "lazydev", group_index = 0 },
-	},
-	confirm_opts = {
-		behavior = cmp.ConfirmBehavior.Replace,
-		select = false,
-	},
-	window = {
-		documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-		},
-	},
-	experimental = {
-		ghost_text = false,
-		native_menu = false,
+require("copilot").setup({
+	suggestion = { enabled = false },
+	panel = { enabled = false },
+	filetypes = {
+		markdown = true,
+		help = true,
 	},
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "sql",
-	callback = function()
-		require("cmp").setup.buffer({
-			sources = {
-				{ name = "copilot" },
-				{ name = "buffer" },
-				{ name = "vim-dadbod-completion" },
-			},
-			experimental = {
-				ghost_text = false,
-				native_menu = false,
-			},
-		})
-	end,
+require("blink.cmp").setup({
+	snippets = { preset = "mini_snippets" },
+	signature = {
+		enabled = true,
+		window = { border = "rounded" },
+	},
+	sources = {
+		default = { "lsp", "path", "snippets", "buffer", "copilot" },
+		per_filetype = {
+			sql = { "dadbod" },
+			lua = { inherit_default = true, "lazydev" },
+		},
+		providers = {
+			dadbod = { module = "vim_dadbod_completion.blink" },
+			lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+			copilot = { name = "copilot", module = "blink-copilot", score_offset = 100, async = true },
+		},
+	},
+	completion = {
+		documentation = {
+			auto_show = true,
+			auto_show_delay_ms = 100,
+			treesitter_highlighting = true,
+			window = { border = "rounded" },
+		},
+	},
+	fuzzy = {
+		sorts = {
+			"exact",
+			"score",
+			"sort_text",
+		},
+	},
+	keymap = {
+		preset = "default",
+		["<Tab>"] = {
+			function(cmp)
+				return cmp.select_next()
+			end,
+			"snippet_forward",
+			"fallback",
+		},
+		["<S-Tab>"] = {
+			function(cmp)
+				return cmp.select_prev()
+			end,
+			"snippet_backward",
+			"fallback",
+		},
+		["<CR>"] = { "accept", "fallback" },
+	},
 })

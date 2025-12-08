@@ -40,30 +40,20 @@ require("lazy").setup({
 	"darrikonn/vim-gofmt",
 
 	-- Completion
-	{ "hrsh7th/nvim-cmp" }, -- The completion plugin
-	{ "hrsh7th/cmp-buffer" }, -- buffer completions
-	{ "hrsh7th/cmp-path" }, -- path completions
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-nvim-lua" },
-	{ "abeldekat/cmp-mini-snippets" },
-	{ "rafamadriz/friendly-snippets" },
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
 		lazy = true,
 	},
-	"zbirenbaum/copilot-cmp",
 	{
-		"CopilotC-Nvim/CopilotChat.nvim",
+		"saghen/blink.cmp",
 		dependencies = {
-			{ "nvim-lua/plenary.nvim", branch = "master" },
+			"fang2hou/blink-copilot",
 		},
-		build = "make tiktoken",
-		opts = {
-			-- See Configuration section for options
-		},
+		version = "1.*",
 	},
+	{ "rafamadriz/friendly-snippets" },
 	{
 		"greggh/claude-code.nvim",
 		dependencies = {

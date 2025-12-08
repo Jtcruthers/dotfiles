@@ -19,7 +19,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = {
+	textDocument = {
+		foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
+		},
+	},
+}
+
+local lsp_capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 require("mason").setup()
 

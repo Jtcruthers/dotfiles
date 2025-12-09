@@ -32,6 +32,7 @@ require("lazy").setup({
 
 	{ "nvim-mini/mini.nvim", version = false },
 	"folke/which-key.nvim",
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
 	-- LSP
 	"williamboman/mason.nvim", -- simple to use language server installer
@@ -40,7 +41,6 @@ require("lazy").setup({
 	"darrikonn/vim-gofmt",
 
 	-- Completion
-
 	{
 		"copilotlsp-nvim/copilot-lsp",
 		init = function()

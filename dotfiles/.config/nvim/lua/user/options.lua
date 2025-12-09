@@ -33,7 +33,6 @@ local options = {
 	foldlevel = 2,
 	splitbelow = true,
 	splitright = true,
-	termguicolors = true,
 	undodir = { config_path .. "/.undo//" },
 	backupdir = { config_path .. "/.backup//" },
 	directory = { config_path .. "/.swp//" },

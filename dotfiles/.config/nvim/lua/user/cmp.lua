@@ -34,6 +34,14 @@ require("copilot").setup({
 		markdown = true,
 		help = true,
 	},
+	nes = {
+		enabled = true,
+		keymap = {
+			accept_and_goto = "<leader>p",
+			accept = false,
+			dismiss = "<Esc>",
+		},
+	},
 })
 
 require("blink.cmp").setup({

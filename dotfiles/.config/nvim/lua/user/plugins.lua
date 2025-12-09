@@ -40,6 +40,16 @@ require("lazy").setup({
 	"darrikonn/vim-gofmt",
 
 	-- Completion
+
+	{
+		"copilotlsp-nvim/copilot-lsp",
+		init = function()
+			vim.g.copilot_nes_debounce = 500
+			vim.keymap.set("n", "<leader>c", function()
+				require("copilot-lsp.nes").apply_pending_nes()
+			end)
+		end,
+	},
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
@@ -54,17 +64,8 @@ require("lazy").setup({
 		version = "1.*",
 	},
 	{ "rafamadriz/friendly-snippets" },
-	{
-		"greggh/claude-code.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- Required for git operations
-		},
-		config = function()
-			require("claude-code").setup()
-		end,
-	},
 
-	-- Colorschemes
+	-- Colorschemes,,
 	{
 		"neanias/everforest-nvim",
 		version = false,

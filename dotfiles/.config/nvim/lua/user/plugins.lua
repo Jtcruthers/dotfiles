@@ -103,4 +103,5 @@ require("lazy").setup({
 			{ "<leader>u", "<cmd>lua require('undotree').toggle()<CR>" },
 		},
 	},
+	{ "OXY2DEV/markview.nvim", lazy = false },
 })

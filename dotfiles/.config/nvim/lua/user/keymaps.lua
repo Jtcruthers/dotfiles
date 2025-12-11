@@ -71,3 +71,5 @@ noremap("n", ";f", ":Pick files<CR>")
 noremap("n", ";s", ":Pick grep_live<CR>")
 noremap("n", ";d", ":Pick diagnostic<CR>")
 noremap("n", ";b", ":Pick buffers<CR>")
+
+vim.keymap.set("n", "<leader>m", ":Markview toggle<CR>")

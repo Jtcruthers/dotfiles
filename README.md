@@ -2,15 +2,13 @@
 
 ## Description
 This repository contains my main dotfiles. It includes configurations for:
-- zsh
-- neovim
+- fish
+- neovim 0.11.*
 - tmux
 - git
 - alacritty
-- powerlevel10k
 
 Neovim + tmux is configured to work together. The neovim leader key is the default (`\`) and the tmux leader key is `ctrl + \`.
-
 
 ## Installation
 

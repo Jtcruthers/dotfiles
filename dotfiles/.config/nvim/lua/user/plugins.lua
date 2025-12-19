@@ -16,7 +16,7 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
 	{ "nvim-lua/popup.nvim" },
 	{ "kyazdani42/nvim-web-devicons" },
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
 	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files

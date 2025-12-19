@@ -53,7 +53,7 @@ require("blink.cmp").setup({
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer", "copilot" },
 		per_filetype = {
-			sql = { "dadbod" },
+			sql = { "dadbod", "buffer", "snippets" },
 			lua = { inherit_default = true, "lazydev" },
 		},
 		providers = {

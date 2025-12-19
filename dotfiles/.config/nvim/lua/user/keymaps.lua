@@ -64,7 +64,7 @@ function get_cwd(local_opts)
 	return git_root
 end
 
-vim.keymap.set("n", ";;", function()
+vim.keymap.set("n", ";", function()
 	MiniExtra.pickers.git_files({ path = get_cwd() })
 end)
 noremap("n", ";f", ":Pick files<CR>")
@@ -73,3 +73,11 @@ noremap("n", ";d", ":Pick diagnostic<CR>")
 noremap("n", ";b", ":Pick buffers<CR>")
 
 vim.keymap.set("n", "<leader>m", ":Markview toggle<CR>")
+vim.keymap.set("n", "<leader>d", function()
+	MiniDiff.toggle_overlay()
+end)
+
+vim.keymap.set("n", "<leader>x", function()
+	MiniTrailspace.trim()
+	MiniTrailspace.trim_last_lines()
+end)

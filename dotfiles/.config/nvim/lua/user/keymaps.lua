@@ -81,3 +81,5 @@ vim.keymap.set("n", "<leader>x", function()
 	MiniTrailspace.trim()
 	MiniTrailspace.trim_last_lines()
 end)
+
+vim.keymap.set("n", "<leader>D", ":DBUIToggle<CR>")

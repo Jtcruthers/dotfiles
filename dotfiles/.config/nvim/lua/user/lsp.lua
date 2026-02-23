@@ -134,7 +134,13 @@ local ts_ls_config = {
 }
 
 -- If you are on most recent `nvim-lspconfig`
-local vue_ls_config = {}
+local vue_ls_config = {
+	on_attach = function(client)
+		-- Disable formatting, let ESLint handle it
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+	end,
+}
 vim.lsp.config("vue_ls", vue_ls_config)
 vim.lsp.config("ts_ls", ts_ls_config)
 vim.lsp.enable({ "ts_ls", "vue_ls" }) -- If using `ts_ls` replace `vtsls` to `ts_ls`
@@ -152,7 +158,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = event.buf,
 				callback = function()
-					vim.lsp.buf.format({ async = false })
+					-- For JS/TS/Vue files, prefer ESLint formatting
+					local filetype = vim.bo.filetype
+					local prefer_eslint_filetypes = {
+						javascript = true,
+						typescript = true,
+						javascriptreact = true,
+						typescriptreact = true,
+						vue = true,
+					}
+
+					if prefer_eslint_filetypes[filetype] then
+						vim.lsp.buf.format({
+							async = false,
+							filter = function(format_client)
+								return format_client.name == "eslint"
+							end,
+						})
+					else
+						vim.lsp.buf.format({ async = false })
+					end
 				end,
 			})
 		end

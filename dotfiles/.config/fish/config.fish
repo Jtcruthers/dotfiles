@@ -27,4 +27,11 @@ set -gx EDITOR 'nvim'
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
+if status is-interactive
+    # Only use keychain on Linux; macOS handles ssh-agent natively
+    if test (uname) = "Linux"
+        eval (keychain --eval --quiet id_ed25519)
+    end
+end
+
 fish_config theme choose Base16\ Eighties
